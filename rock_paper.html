@@ -8,9 +8,9 @@
 </head>
 <body>
     <div class = "input-buttons">
-        <button class = "btn rock">Rock</button>
-        <button class = "btn paper">Paper</button>
-        <button class = "btn scissors">scissors</button>
+        <button class = "btn" data-choice = "rock">Rock</button>
+        <button class = "btn" data-choice = "paper">Paper</button>
+        <button class = "btn" data-choice = "scissors">scissors</button>
         <div class = "round-result"></div>
         <div class = "final-result"></div>
     </div>
@@ -22,8 +22,11 @@
         const roundResult = document.querySelector('.round-result');
         const finalResult = document.querySelector('.final-result');
 
+        const choice = ["ROCK", "PAPER", "SCISSORS"];
+
         function game(e) {
-            let user_choice = this.classList.value.split(' ')[1];
+            let user_choice = this.getAttribute('data-choice');
+            let winner = "";
 
             let computer_choice = getComputerChoice();
             if (user_choice.toUpperCase() == computer_choice) {
@@ -63,9 +66,9 @@
                         winner = "Computer";
                     }
                 }
-                roundResult.textContent = `The winner of this round is ${winner}`; // Add "Good luck next if user loses or other interactive responses"
-                while (user_score == 5 || computer_score == 5) {
-                    finalResult.textContent = `The first to score 5 points was ${user_score > computer_score ? user_score : computer_score}`;
+                roundResult.textContent = `The winner of this round is ${winner} User: ${user_score} Computer: ${computer_score}`; // Add "Good luck next if user loses or other interactive responses"
+                if (user_score == 5 || computer_score == 5) {
+                    finalResult.textContent = `The first to score 5 points was ${user_score > computer_score ? "User" : "Computer"}`;
                     }  
             }
 
@@ -75,15 +78,7 @@
             return computer_choice;
         }
   
-        btns.forEach(btn => btn.addEventListener('onClick', game));
-
-                
-                
-            
-            // alert(`Your Score: ${user_score} Computer Score: ${computer_score}`);
-            // alert(user_score > computer_score? "User wins": "Computer wins");
-        const choice = ["ROCK", "PAPER", "SCISSORS"];
-        game();
+        btns.forEach(btn => btn.addEventListener('click', game));
             
     </script>
 </body>
