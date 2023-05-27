@@ -7,56 +7,81 @@
     <title>Game console</title>
 </head>
 <body>
+    <div class = "input-buttons">
+        <button class = "btn rock">Rock</button>
+        <button class = "btn paper">Paper</button>
+        <button class = "btn scissors">scissors</button>
+        <div class = "round-result"></div>
+        <div class = "final-result"></div>
+    </div>
     <script type="text/javascript">
-        function getComputerChoice() {
-            let choice_num = Math.floor(Math.random() * 3)
-            let computer_choice = choice[choice_num];
-            return computer_choice;
-        }
+        let user_score = 0, computer_score = 0;
 
-        function game() {
-            let user_score = 0, computer_score = 0;
-            
-            for (let x = 0; x < 5; x++) {
-                let user_choice = prompt("Enter your choice");
-                let computer_choice = getComputerChoice();
-                alert(`Computer choice: ${computer_choice}`);
-                if (!choice.includes(user_choice.toUpperCase())) {
-                    alert("Please Enter a valid choice");
-                    x -= 1;
+        const btns = document.querySelectorAll('.btn');
+
+        const roundResult = document.querySelector('.round-result');
+        const finalResult = document.querySelector('.final-result');
+
+        function game(e) {
+            let user_choice = this.classList.value.split(' ')[1];
+
+            let computer_choice = getComputerChoice();
+            if (user_choice.toUpperCase() == computer_choice) {
+                winner = "Tie"
+            }
+
+            if (user_choice.toUpperCase() == "ROCK") {
+                let winner = "";
+                if (computer_choice == "SCISSORS") {
+                    user_score += 1;
+                    winner = "User";
                 }
-                
-                else if (user_choice.toUpperCase() == "ROCK") {
-                    if (computer_choice == "SCISSORS") {
-                        user_score += 1;
-                    }
-                    else if (computer_choice == "PAPER"){
-                        computer_score += 1;
-                    }
+                else if (computer_choice == "PAPER"){
+                    computer_score += 1;
+                    winner = "Computer";
+                }
                 }
 
                 else if (user_choice.toUpperCase() == "PAPER") {
                     if (computer_choice == "ROCK") {
                         user_score += 1;
+                        winner = "User";
                     }
                     else if (computer_choice == "SCISSORS") {
                         computer_score += 1;
+                        winner = "Computer";
                     }
                 }
 
                 else if (user_choice.toUpperCase() == "SCISSORS") {
                     if (computer_choice == "PAPER") {
                         user_score += 1;
+                        winner = "User";
                     }
                     else if (computer_choice == "ROCK") {
                         computer_score += 1;
+                        winner = "Computer";
                     }
                 }
+                roundResult.textContent = `The winner of this round is ${winner}`; // Add "Good luck next if user loses or other interactive responses"
+                while (user_score == 5 || computer_score == 5) {
+                    finalResult.textContent = `The first to score 5 points was ${user_score > computer_score ? user_score : computer_score}`;
+                    }  
             }
-            
-            alert(`Your Score: ${user_score} Computer Score: ${computer_score}`);
-            alert(user_score > computer_score? "User wins": "Computer wins");
+
+        function getComputerChoice() {
+            let choice_num = Math.floor(Math.random() * 3)
+            let computer_choice = choice[choice_num];
+            return computer_choice;
         }
+  
+        btns.forEach(btn => btn.addEventListener('onClick', game));
+
+                
+                
+            
+            // alert(`Your Score: ${user_score} Computer Score: ${computer_score}`);
+            // alert(user_score > computer_score? "User wins": "Computer wins");
         const choice = ["ROCK", "PAPER", "SCISSORS"];
         game();
             
