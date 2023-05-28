@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="rock_paper.css"/>
     <title>Game console</title>
 </head>
@@ -71,11 +72,13 @@
                     }
                 }
                 if (winner == "Tie") {
-                    roundResult.innerHTML = `This round is Tied\nUser: ${user_score} Computer: ${computer_score}`;
+                    roundResult.innerHTML = `This round is Tied\n<span>User: ${user_score} Computer: ${computer_score}</span>`;
+                    
                 }
                 else {
-                    roundResult.innerHTML = `The winner of this round is ${winner}\nUser: ${user_score} Computer: ${computer_score}`; // Add "Good luck next if user loses or other interactive responses"
+                    roundResult.innerHTML = `The winner of this round is ${winner}\n<span>User: ${user_score} Computer: ${computer_score}</span>`; // Add "Good luck next if user loses or other interactive responses"
                 }
+                roundResult.style.opacity = 1;
                 if (user_score == 5 || computer_score == 5) {
                     finalResult.textContent = `The first to score 5 points was ${user_score > computer_score ? "User" : "Computer"}`;
                     pbtn.style.display = "block";
@@ -97,6 +100,10 @@
             pbtn.style.display = "none";
         }
 
+        function resetImg(e) {
+            this.classList.remove('btn-click');
+        }
+
         let user_score = 0, computer_score = 0;
 
         const btns = document.querySelectorAll('.btn');
@@ -107,7 +114,11 @@
 
         const choice = ["ROCK", "PAPER", "SCISSORS"];
   
-        btns.forEach(btn => btn.addEventListener('click', game));
+        btns.forEach(btn => btn.addEventListener('click', game));   
+        btns.forEach(btn => btn.addEventListener('mouseover', function(e) {
+            this.classList.add('btn-click');
+        }));
+        btns.forEach(btn => btn.addEventListener('mouseout', resetImg));
         pbtn.addEventListener('click', playAgain);
             
     </script>

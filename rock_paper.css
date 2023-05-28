@@ -4,24 +4,46 @@
 
 body {
     margin: 0px;
-    /* background-image: url(https://images.alphacoders.com/116/1163408.jpg); */
+    font-family: 'Roboto Condensed', sans-serif;
+    /* background-color: #FF3131; */
+    background-image: url(https://cdn.wallpapersafari.com/4/25/95PgKD.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
 
+.input-buttons {
+    margin: auto;
+    width: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .buttons-only {
     display: flex;
+    height: 100%;
+    
+    align-items: center;
+    
 }
 
 .btn {
     padding: 0px;
     width: 10rem;
+    transition: transform box-shadow 0.2s;
+    border: 3px outset #2b3f23;
+    cursor: pointer;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
     background-color: skyblue;
     height: 10rem;
-    
-    
     margin: 30px;
+}
+
+.btn-click {
+    transform: scale(1.1);
 }
 
 .btn-div {
@@ -30,8 +52,9 @@ body {
 }
 
 .btn-text {
-    font-size: 20px;
-    background-color: red;
+    font-size: 3rem;
+    margin-top: -10px;
+    color: rgb(11, 54, 11);
     text-align: center;
 }
 
@@ -53,4 +76,24 @@ body {
     transform: background-image scale(2,2); 
     background-size: cover; 
     background-position: center;
+}
+
+.round-result {
+    font-size: 3rem;
+    width: 90%;
+    height: 200px;
+    margin: 100px 0px;
+    text-align: center;
+    color: greenyellow;
+    box-shadow: #2b3f23;
+}
+.round-result span {
+    font-size: 24px;
+    color: rgb(152, 252, 2);
+}
+
+
+.final-result {
+    font-size: 30px;
+    background-color: greenyellow;
 }
