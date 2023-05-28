@@ -1,0 +1,56 @@
+* {
+    margin: 0px;
+}
+
+body {
+    margin: 0px;
+    /* background-image: url(https://images.alphacoders.com/116/1163408.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.buttons-only {
+    display: flex;
+}
+
+.btn {
+    padding: 0px;
+    width: 10rem;
+    background-color: skyblue;
+    height: 10rem;
+    
+    
+    margin: 30px;
+}
+
+.btn-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-text {
+    font-size: 20px;
+    background-color: red;
+    text-align: center;
+}
+
+#rock {
+    background-image: url(https://wallpapers.com/images/hd/gon-rock-paper-scissor-power-weuhljvk07gm4yqx.jpg); 
+    background-size: cover; 
+    background-position: center;
+}
+
+#paper {
+    background-image: url(https://i.ytimg.com/vi/_vr25mXpJNE/maxresdefault.jpg);
+    transform: background-image scale(2,2); 
+    background-size: cover; 
+    background-position: center;
+}
+
+#scissors {
+    background-image: url(https://pm1.aminoapps.com/6663/6ec005f7f3fe5502879b175f9b3f3cb04b375814_hq.jpg);
+    transform: background-image scale(2,2); 
+    background-size: cover; 
+    background-position: center;
+}

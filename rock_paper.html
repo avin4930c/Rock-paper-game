@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="rock_paper.css"/>
     <title>Game console</title>
 </head>
 <body>
     <div class = "input-buttons">
-        <button class = "btn" data-choice = "rock">Rock</button>
-        <button class = "btn" data-choice = "paper">Paper</button>
-        <button class = "btn" data-choice = "scissors">scissors</button>
-        <div class = "round-result"></div>
-        <div class = "final-result"></div>
+        <div class = "buttons-only">
+            <div class = "btn-div">
+                <button class = "btn" id = "rock" data-choice = "rock"></button><span class = "btn-text">Rock</span>
+            </div>
+            <div class = "btn-div">
+                <button class = "btn" id = "paper" data-choice = "paper"><i class="fa-solid fa-hand"></i></button><span class = "btn-text">Paper</span>
+            </div>
+            <div class = "btn-div">
+                <button class = "btn" id = "scissors" data-choice = "scissors"><i class="fa-solid fa-hand-scissors"></i></i></button><span class = "btn-text">Scissors</span>
+            </div>
+        </div>
+        
+        
+        
+        <div class = "round-result" style="white-space: pre-wrap;"></div>
+        <div class = "final-result" style="white-space: pre-wrap;"></div>
+        <button class = "play-again" style = "display: none;">Play Again</button>
     </div>
-    <script type="text/javascript">
-        let user_score = 0, computer_score = 0;
-
-        const btns = document.querySelectorAll('.btn');
-
-        const roundResult = document.querySelector('.round-result');
-        const finalResult = document.querySelector('.final-result');
-
-        const choice = ["ROCK", "PAPER", "SCISSORS"];
+    <script>
 
         function game(e) {
             let user_choice = this.getAttribute('data-choice');
@@ -34,7 +39,6 @@
             }
 
             if (user_choice.toUpperCase() == "ROCK") {
-                let winner = "";
                 if (computer_choice == "SCISSORS") {
                     user_score += 1;
                     winner = "User";
@@ -66,9 +70,16 @@
                         winner = "Computer";
                     }
                 }
-                roundResult.textContent = `The winner of this round is ${winner} User: ${user_score} Computer: ${computer_score}`; // Add "Good luck next if user loses or other interactive responses"
+                if (winner == "Tie") {
+                    roundResult.innerHTML = `This round is Tied\nUser: ${user_score} Computer: ${computer_score}`;
+                }
+                else {
+                    roundResult.innerHTML = `The winner of this round is ${winner}\nUser: ${user_score} Computer: ${computer_score}`; // Add "Good luck next if user loses or other interactive responses"
+                }
                 if (user_score == 5 || computer_score == 5) {
                     finalResult.textContent = `The first to score 5 points was ${user_score > computer_score ? "User" : "Computer"}`;
+                    pbtn.style.display = "block";
+                    btns.forEach(btn => btn.removeEventListener("click", game));    
                     }  
             }
 
@@ -77,8 +88,27 @@
             let computer_choice = choice[choice_num];
             return computer_choice;
         }
+
+        function playAgain() {
+            user_score = 0, computer_score = 0;
+            btns.forEach(btn => btn.addEventListener('click', game));
+            roundResult.textContent = "";
+            finalResult.textContent = "";
+            pbtn.style.display = "none";
+        }
+
+        let user_score = 0, computer_score = 0;
+
+        const btns = document.querySelectorAll('.btn');
+        const pbtn = document.querySelector(".play-again");
+
+        const roundResult = document.querySelector('.round-result');
+        const finalResult = document.querySelector('.final-result');
+
+        const choice = ["ROCK", "PAPER", "SCISSORS"];
   
         btns.forEach(btn => btn.addEventListener('click', game));
+        pbtn.addEventListener('click', playAgain);
             
     </script>
 </body>
