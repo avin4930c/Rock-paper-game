@@ -122,7 +122,7 @@
         btns.forEach(btn => btn.addEventListener('mouseover', function(e) {
             this.classList.add('btn-click');
             element = document.querySelector(`.btn-text[data-choice = ${this.getAttribute('data-choice')}]`);
-            element.style.color = "yellow";
+            element.style.color = "rgba(230,186,89,255)";
         }));
         btns.forEach(btn => btn.addEventListener('mouseout', resetImg));
         pbtn.addEventListener('click', playAgain);
