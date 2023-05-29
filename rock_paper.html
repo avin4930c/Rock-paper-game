@@ -12,13 +12,13 @@
     <div class = "input-buttons">
         <div class = "buttons-only">
             <div class = "btn-div">
-                <button class = "btn" id = "rock" data-choice = "rock"></button><span class = "btn-text">Rock</span>
+                <button class = "btn" id = "rock" data-choice = "rock"></button><span class = "btn-text" data-choice = "rock">Rock</span>
             </div>
             <div class = "btn-div">
-                <button class = "btn" id = "paper" data-choice = "paper"><i class="fa-solid fa-hand"></i></button><span class = "btn-text">Paper</span>
+                <button class = "btn" id = "paper" data-choice = "paper"><i class="fa-solid fa-hand"></i></button><span class = "btn-text" data-choice = "paper">Paper</span>
             </div>
             <div class = "btn-div">
-                <button class = "btn" id = "scissors" data-choice = "scissors"><i class="fa-solid fa-hand-scissors"></i></i></button><span class = "btn-text">Scissors</span>
+                <button class = "btn" id = "scissors" data-choice = "scissors"><i class="fa-solid fa-hand-scissors"></i></i></button><span class = "btn-text" data-choice = "scissors">Scissors</span>
             </div>
         </div>
         
@@ -78,7 +78,6 @@
                 else {
                     roundResult.innerHTML = `The winner of this round is ${winner}\n<span>User: ${user_score} Computer: ${computer_score}</span>`; // Add "Good luck next if user loses or other interactive responses"
                 }
-                roundResult.style.opacity = 1;
                 if (user_score == 5 || computer_score == 5) {
                     finalResult.textContent = `The first to score 5 points was ${user_score > computer_score ? "User" : "Computer"}`;
                     pbtn.style.display = "block";
@@ -102,6 +101,7 @@
 
         function resetImg(e) {
             this.classList.remove('btn-click');
+            element.style.color = "rgb(11, 54, 11)";
         }
 
         let user_score = 0, computer_score = 0;
@@ -112,11 +112,17 @@
         const roundResult = document.querySelector('.round-result');
         const finalResult = document.querySelector('.final-result');
 
+        const spans = document.querySelectorAll('span');
+
         const choice = ["ROCK", "PAPER", "SCISSORS"];
+
+        let element = "";
   
         btns.forEach(btn => btn.addEventListener('click', game));   
         btns.forEach(btn => btn.addEventListener('mouseover', function(e) {
             this.classList.add('btn-click');
+            element = document.querySelector(`.btn-text[data-choice = ${this.getAttribute('data-choice')}]`);
+            element.style.color = "yellow";
         }));
         btns.forEach(btn => btn.addEventListener('mouseout', resetImg));
         pbtn.addEventListener('click', playAgain);

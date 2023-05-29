@@ -6,7 +6,7 @@ body {
     margin: 0px;
     font-family: 'Roboto Condensed', sans-serif;
     /* background-color: #FF3131; */
-    background-image: url(https://cdn.wallpapersafari.com/4/25/95PgKD.jpg);
+    background-image: url(https://images.unsplash.com/photo-1544656376-ffe19d4b7353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2slMjBza3l8ZW58MHx8MHx8fDA%3D&w=1000&q=80);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -45,7 +45,8 @@ body {
 
 .btn-click {
     transform: scale(1.1);
-    box-shadow: 0px 0px 10px 3px rgba(255, 0, 0, 1);
+    box-shadow: 0px 0px 5px 3px rgb(231, 229, 109), 0px 0px 20px 5px #da7f6b; /*add same color text to the label*/
+    
 }
 
 .btn-div {
