@@ -26,9 +26,6 @@
             <div class = "user-score">Player score: 0</div>
             <div class = "computer-score">Gon's Score: 0</div>
         </div>
-        
-        
-        
         <div class = "round-result" style="white-space: pre-wrap;"></div>
         <div class = "final-result" style="white-space: pre-wrap;"></div>
         <button class = "play-again" style = "display: none;">Play Again</button>
@@ -87,11 +84,15 @@
                 }
                 if (winner == "GON") {
                     compscoreDiv.style.color = "greenyellow";
+                    compscoreDiv.style.textShadow = "0 0 5px #da7f6b";
                     pscoreDiv.style.color = "rgba(230,186,89,255)";
+                    pscoreDiv.style.textShadow = "none";
                 }
                 else if (winner == "Player"){
                     pscoreDiv.style.color = "greenyellow";
+                    pscoreDiv.style.textShadow = "0 0 5px #da7f6b";
                     compscoreDiv.style.color = "rgba(230,186,89,255)";
+                    compscoreDiv.style.textShadow = "none";
                 }
                 if (winner == "Tie") {
                     roundResult.innerHTML = `This round is Tied\n<span>Player: ${user_choice.toUpperCase()}           Gon: ${computer_choice}</span>`;
@@ -103,7 +104,7 @@
                 if (user_score == 5 || computer_score == 5) {
                     finalResult.textContent = `The first to score 5 points was ${user_score > computer_score ? "User" : "Computer"}`;
                     pbtn.style.display = "block";
-                    btns.forEach(btn => btn.removeEventListener("click", game));    
+                    btns.forEach(btn => btn.removeEventListener("click", game));
                     }  
             }
 
