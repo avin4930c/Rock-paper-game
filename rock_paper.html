@@ -9,6 +9,7 @@
     <title>Game console</title>
 </head>
 <body>
+    <div class = "title">Play Janken with GON<!--<div class = "inner-title">You get to hang out with Killua for a day if you can win against Gon</div>--></div>
     <div class = "input-buttons">
         <div class = "buttons-only">
             <div class = "btn-div">
@@ -21,6 +22,10 @@
                 <button class = "btn" id = "scissors" data-choice = "scissors"><i class="fa-solid fa-hand-scissors"></i></i></button><span class = "btn-text" data-choice = "scissors">Scissors</span>
             </div>
         </div>
+        <div class = "score-div">
+            <div class = "user-score">Player score: 0</div>
+            <div class = "computer-score">Gon's Score: 0</div>
+        </div>
         
         
         
@@ -29,6 +34,9 @@
         <button class = "play-again" style = "display: none;">Play Again</button>
     </div>
     <script>
+
+        const pscoreDiv = document.querySelector(".user-score");
+        const compscoreDiv = document.querySelector(".computer-score");
 
         function game(e) {
             let user_choice = this.getAttribute('data-choice');
@@ -42,41 +50,55 @@
             if (user_choice.toUpperCase() == "ROCK") {
                 if (computer_choice == "SCISSORS") {
                     user_score += 1;
-                    winner = "User";
+                    pscoreDiv.innerHTML = `Player score: ${user_score}`;
+                    winner = "Player";
                 }
                 else if (computer_choice == "PAPER"){
                     computer_score += 1;
-                    winner = "Computer";
+                    compscoreDiv.innerHTML = `Gon's Score: ${computer_score}`;
+                    winner = "GON";
                 }
                 }
 
                 else if (user_choice.toUpperCase() == "PAPER") {
                     if (computer_choice == "ROCK") {
                         user_score += 1;
-                        winner = "User";
+                        pscoreDiv.innerHTML = `Player score: ${user_score}`;
+                        winner = "Player";
                     }
                     else if (computer_choice == "SCISSORS") {
                         computer_score += 1;
-                        winner = "Computer";
+                        compscoreDiv.innerHTML = `Gon's Score: ${computer_score}`;
+                        winner = "GON";
                     }
                 }
 
                 else if (user_choice.toUpperCase() == "SCISSORS") {
                     if (computer_choice == "PAPER") {
                         user_score += 1;
-                        winner = "User";
+                        pscoreDiv.innerHTML = `Player score: ${user_score}`;
+                        winner = "Player";
                     }
                     else if (computer_choice == "ROCK") {
                         computer_score += 1;
-                        winner = "Computer";
+                        compscoreDiv.innerHTML = `Gon's Score: ${computer_score}`;
+                        winner = "GON";
                     }
                 }
+                if (winner == "GON") {
+                    compscoreDiv.style.color = "greenyellow";
+                    pscoreDiv.style.color = "rgba(230,186,89,255)";
+                }
+                else if (winner == "Player"){
+                    pscoreDiv.style.color = "greenyellow";
+                    compscoreDiv.style.color = "rgba(230,186,89,255)";
+                }
                 if (winner == "Tie") {
-                    roundResult.innerHTML = `This round is Tied\n<span>User: ${user_score} Computer: ${computer_score}</span>`;
+                    roundResult.innerHTML = `This round is Tied\n<span>Player: ${user_choice.toUpperCase()}           Gon: ${computer_choice}</span>`;
                     
                 }
                 else {
-                    roundResult.innerHTML = `The winner of this round is ${winner}\n<span>User: ${user_score} Computer: ${computer_score}</span>`; // Add "Good luck next if user loses or other interactive responses"
+                    roundResult.innerHTML = `The winner of this round is ${winner}\n<span>Player: ${user_choice.toUpperCase()}           Gon: ${computer_choice}</span>`; // Add "Good luck next if user loses or other interactive responses"
                 }
                 if (user_score == 5 || computer_score == 5) {
                     finalResult.textContent = `The first to score 5 points was ${user_score > computer_score ? "User" : "Computer"}`;
