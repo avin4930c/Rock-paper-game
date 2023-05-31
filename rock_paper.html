@@ -9,7 +9,7 @@
     <title>Game console</title>
 </head>
 <body>
-    <div class = "title">Play Janken with GON<!--<div class = "inner-title">You get to hang out with Killua for a day if you can win against Gon</div>--></div>
+    <div class = "title">Play Janken with GON<div class = "inner-title">First to 5 points wins</div></div>
     <div class = "input-buttons">
         <div class = "buttons-only">
             <div class = "btn-div">
@@ -102,7 +102,7 @@
                     roundResult.innerHTML = `The winner of this round is ${winner}\n<span>Player: ${user_choice.toUpperCase()}           Gon: ${computer_choice}</span>`; // Add "Good luck next if user loses or other interactive responses"
                 }
                 if (user_score == 5 || computer_score == 5) {
-                    finalResult.textContent = `The first to score 5 points was ${user_score > computer_score ? "User" : "Computer"}`;
+                    finalResult.textContent = `${user_score > computer_score ? "User" : "Computer"} Wins the Game`;
                     pbtn.style.display = "block";
                     btns.forEach(btn => btn.removeEventListener("click", game));
                     }  
@@ -117,6 +117,10 @@
         function playAgain() {
             user_score = 0, computer_score = 0;
             btns.forEach(btn => btn.addEventListener('click', game));
+            compscoreDiv.style.color = "rgba(230,186,89,255)";
+            compscoreDiv.style.textShadow = "none";
+            pscoreDiv.style.color = "rgba(230,186,89,255)";
+            pscoreDiv.style.textShadow = "none";
             roundResult.textContent = "";
             finalResult.textContent = "";
             pbtn.style.display = "none";
