@@ -86,7 +86,7 @@ body {
 .round-result {
     font-size: 3rem;
     width: 90%;
-    height: 200px;
+    height: 18vh;
     padding: 20px;
     margin: 0px 0px;
     text-align: center;
@@ -103,8 +103,11 @@ body {
 
 
 .final-result {
-    font-size: 30px;
-    height: 5vh;
+    font-size: 4rem;
+    padding: 10px;
+    text-align: center;
+    font-weight: 700;
+    color: yellowgreen;
 }
 
 .play-again {

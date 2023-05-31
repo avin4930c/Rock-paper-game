@@ -102,7 +102,7 @@
                     roundResult.innerHTML = `The winner of this round is ${winner}\n<span>Player: ${user_choice.toUpperCase()}           Gon: ${computer_choice}</span>`; // Add "Good luck next if user loses or other interactive responses"
                 }
                 if (user_score == 5 || computer_score == 5) {
-                    finalResult.textContent = `${user_score > computer_score ? "User" : "Computer"} Wins the Game`;
+                    finalResult.innerHTML = `${user_score > computer_score ? "Player" : "Computer"} Wins the Game`;
                     pbtn.style.display = "block";
                     btns.forEach(btn => btn.removeEventListener("click", game));
                     }  
