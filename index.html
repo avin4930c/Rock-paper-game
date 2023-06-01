@@ -9,7 +9,7 @@
     <title>Game console</title>
 </head>
 <body>
-    <div class = "title">Play Janken with GON<div class = "inner-title">First to 5 points wins</div></div>
+    <div class = "title">Play Janken with <a href = "https://hunterxhunter.fandom.com/wiki/Gon_Freecss" target = "_blank" style = "color: yellow";>GON</a><div class = "inner-title">First to 5 points wins</div></div>
     <div class = "input-buttons">
         <div class = "buttons-only">
             <div class = "btn-div">
@@ -31,9 +31,6 @@
         <button class = "play-again" style = "display: none;">Play Again</button>
     </div>
     <script>
-
-        const pscoreDiv = document.querySelector(".user-score");
-        const compscoreDiv = document.querySelector(".computer-score");
 
         function game(e) {
             let user_choice = this.getAttribute('data-choice');
@@ -102,7 +99,7 @@
                     roundResult.innerHTML = `The winner of this round is ${winner}\n<span>Player: ${user_choice.toUpperCase()}           Gon: ${computer_choice}</span>`; // Add "Good luck next if user loses or other interactive responses"
                 }
                 if (user_score == 5 || computer_score == 5) {
-                    finalResult.innerHTML = `${user_score > computer_score ? "Player" : "Computer"} Wins the Game`;
+                    finalResult.innerHTML = `${user_score > computer_score ? "Player" : "Gon"} Wins the Game`;
                     pbtn.style.display = "block";
                     btns.forEach(btn => btn.removeEventListener("click", game));
                     }  
@@ -138,6 +135,9 @@
 
         const roundResult = document.querySelector('.round-result');
         const finalResult = document.querySelector('.final-result');
+
+        const pscoreDiv = document.querySelector(".user-score");
+        const compscoreDiv = document.querySelector(".computer-score");
 
         const spans = document.querySelectorAll('span');
 
