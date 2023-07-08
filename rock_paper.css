@@ -146,3 +146,47 @@ body {
 .inner-title {
     font-size: 1.5rem;
 }
+
+@media only screen and (max-width: 480px) {
+    .input-buttons {
+        margin-top: 5vh;
+    }
+
+    .btn {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .btn-text {
+        font-size: 1rem;
+    }
+
+    .round-result {
+        font-size: 1.4rem;
+    }
+
+    .round-result span {
+        font-size: 1.6rem;
+    }
+
+    .final-result {
+        font-size: 2rem;
+    }
+
+    .play-again {
+        font-size: 16px;
+        height: 3rem;
+    }
+
+    .score-div {
+        font-size: 1.4rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .inner-title {
+        font-size: 1rem;
+    }
+}
