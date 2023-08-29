@@ -70,7 +70,7 @@ body {
 }
 
 #paper {
-    background-image: url(https://i.ytimg.com/vi/_vr25mXpJNE/maxresdefault.jpg);
+    background-image: url(https://pm1.aminoapps.com/6663/6e8d3139220e32b60f299ee8bb55160a4ea83c9f_hq.jpg);
     transform: background-image scale(2,2); 
     background-size: cover; 
     background-position: center;
@@ -166,7 +166,7 @@ body {
     }
 
     .round-result span {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
     }
 
     .final-result {
